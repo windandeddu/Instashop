@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="WindAndeddu_InstaShop::grid" title="Insta Shop" module="WindAndeddu_InstaShop" sortOrder="30" parent="Magento_Backend::content_elements" action="instashop/posts" resource="WindAndeddu_InstaShop::grid"/>
+    </menu>
+</config>

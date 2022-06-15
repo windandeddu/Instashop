@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">instashop_post_form.instashop_post_form_data_source</item>
+            <item name="deps" xsi:type="string">instashop_post_form.instashop_post_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Employee Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">instashop_post_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="WindAndeddu\InstaShop\Block\Adminhtml\Button\SaveButton"/>
+            <button name="delete" class="WindAndeddu\InstaShop\Block\Adminhtml\Button\DeleteButton"/>
+            <button name="back" class="WindAndeddu\InstaShop\Block\Adminhtml\Button\BackButton"/>
+        </buttons>
+    </settings>
+    <dataSource name="instashop_post_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">WindAndeddu\InstaShop\Ui\Component\Form\DataProvider</argument>
+            <argument name="name" xsi:type="string">instashop_post_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" path="*/*/save" xsi:type="url"/>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="voga_instashop">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">InstaShop Post Details</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">grid</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <comment>Name of the block displayed on the grid.</comment>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="status" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">grid</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <label translate="true">Is Active</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="publish_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="label" xsi:type="string" translate="true">Publish Date</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="sortOrder" xsi:type="number">21</item>
+                    <item name="dataScope" xsi:type="string">publish_date</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="product_skus">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Products SKU</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">grid</item>
+                    <item name="dataScope" xsi:type="string">product_skus</item>
+                    <item name="notice" xsi:type="string">Enter the SKU of products, separated by commas.</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">URL Post</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">grid</item>
+                    <item name="dataScope" xsi:type="string">url</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+    </fieldset>
+
+    <fieldset name="store_caption_fieldset">
+        <settings>
+            <collapsible>false</collapsible>
+            <label/>
+        </settings>
+        <container name="caption" sortOrder="50">
+            <htmlContent name="html_content">
+                <block name="titles" class="WindAndeddu\InstaShop\Block\Adminhtml\Posts\Edit\Captions"/>
+            </htmlContent>
+        </container>
+    </fieldset>
+
+    <fieldset name="instashop_media">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Images / Video</label>
+            <componentType>fieldset</componentType>
+        </settings>
+        <field name="images" sortOrder="10" formElement="imageUploader" template="WindAndeddu_InstaShop/form/element/uploader/image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">images</item>
+                    <item name="isMultipleFiles" xsi:type="string">true</item>
+                </item>
+            </argument>
+            <settings>
+                <notice translate="true">
+                    <![CDATA[
+                        <p>
+                            Please note that .gif files will be displayed in their REAL SIZE; </br>
+                            Please upload image 435x544px;
+                        </p>
+                    ]]>
+                </notice>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <dataType>string</dataType>
+                <label translate="true">Images</label>
+                <visible>true</visible>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <required>false</required>
+                        <previewTmpl>WindAndeddu_InstaShop/image-preview</previewTmpl>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="instashop/image/imageuploader"/>
+                        </uploaderConfig>
+                        <openDialogTitle>Media Gallery</openDialogTitle>
+                        <initialMediaGalleryOpenSubpath>instashop/images</initialMediaGalleryOpenSubpath>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>5242880</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="video">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">video</item>
+                    <item name="label" xsi:type="string">Video</item>
+                    <item name="notice" xsi:type="string">Format: mp4; Max size file 15 mb.</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="allowedExtensions" xsi:type="string">mp4</item>
+                    <item name="previewTmpl" xsi:type="string">WindAndeddu_InstaShop/video-preview</item>
+                    <item name="maxFileSize" xsi:type="number">15728640</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="instashop/video/videouploader"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+
+</form>
+
+

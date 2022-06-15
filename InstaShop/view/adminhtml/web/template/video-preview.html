@@ -1,0 +1,16 @@
+<div class="file-uploader-summary">
+    <div class="actions">
+        <button
+            type="button"
+            class="action-remove"
+            data-role="delete-button"
+            attr="title: $t('Delete image')"
+            disable="$parent.disabled"
+            click="$parent.removeFile.bind($parent, $file)">
+            <span translate="'Delete video'"/>
+        </button>
+    </div>
+    <a class="image-uploader-preview-link" attr="href: $parent.getFilePreview($file)" target="_blank">
+        <div class="file-uploader-filename" text="$file.name"/>
+    </a>
+</div>

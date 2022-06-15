@@ -1,0 +1,47 @@
+type Query {
+    instashop(current_page: Int!): InstaShop
+    @resolver(class: "WindAndeddu\\InstaShopGraphQl\\Model\\Resolver\\InstaShop")
+    @cache(cacheIdentity: "WindAndeddu\\InstaShopGraphQl\\Model\\Resolver\\InstaShop\\Identity")
+}
+
+type InstaShop {
+    items: [InstaShopPosts] @doc(description: "InstaShop Posts")
+    page_count: Int @doc(description: "Number of collection pages")
+}
+
+type InstaShopPosts {
+    id: Int @doc(description: "InstaShop Post ID.")
+    name: String @doc(description: "InstaShop Post Name.")
+    listing_image: String @doc(description: "InstaShop Listing Image.")
+    popup_images: [String] @doc(description: "InstaShop Popup Images.")
+    video: String @doc(description: "InstaShop Video.")
+    products: [InstaShopProduct] @doc(description: "InstaShop Products")
+    caption: String @doc(description: "Instashop Post Caption")
+    url: String @doc(description: "Post Url in SN")
+    publish_date: String @doc(description: "Post Publish Date/Time")
+}
+
+type InstaShopProduct {
+    name: String
+    is_salable: Int
+    url: String
+    price: InstashopProductPrice
+    product_image: BaseProductImage
+    product_options: [InstaShopProductOptions]
+    sku: String
+    product_label: ConfigurableProductLabel
+}
+
+type InstaShopProductOptions {
+    variant_id: String
+    title: String
+    value: String
+    is_in_stock: Boolean
+    sku: String
+    price: InstashopProductPrice
+}
+
+type InstashopProductPrice @doc(description: "Represents a product price.") {
+    regular_price: Money! @doc(description: "The regular price of the product.")
+    special_price: Money! @doc(description: "The final price of the product after discounts applied.")
+}

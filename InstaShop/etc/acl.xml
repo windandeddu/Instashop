@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="WindAndeddu_InstaShop::instashop" title="InstaShop" sortOrder="10">
+                    <resource id="WindAndeddu_InstaShop::grid" title="View InstaShop Posts" sortOrder="50"/>
+                    <resource id="WindAndeddu_InstaShop::edit" title="Edit/Delete InstaShop Posts" sortOrder="100"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

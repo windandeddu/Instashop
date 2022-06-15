@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="WindAndeddu\InstaShop\View\Element\UiComponent\DataProvider\SearchResult"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">WindAndeddu_instashop</argument>
+            <argument name="resourceModel" xsi:type="string">WindAndeddu\InstaShop\Model\ResourceModel\InstaShop</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="instashop_post_listing_data_source" xsi:type="string">
+                    WindAndeddu\InstaShop\View\Element\UiComponent\DataProvider\SearchResult
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="WindAndeddu\InstaShop\Model\Images\ImageProvider">
+        <arguments>
+            <argument name="resizeImages" xsi:type="array">
+                <item name="images" xsi:type="string">true</item>
+                <item name="popup_images" xsi:type="string">true</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="WindAndeddu\InstaShop\Model\ImageResize" type="WindAndeddu\ImageUploader\Model\ImageResize">
+        <arguments>
+            <argument name="mediaDirPath" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_PATH_TO_IMAGE_DIR</argument>
+            <argument name="mediaUrl" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_MEDIA_URL</argument>
+            <argument name="cacheDirPath" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_CACHE_DIR_PATH</argument>
+            <argument name="groupName" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_IMAGE_GROUP_NAME</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="WindAndeddu\InstaShop\Model\View\Image" type="WindAndeddu\ImageUploader\Model\View\Image">
+        <arguments>
+            <argument name="imageResize" xsi:type="object">WindAndeddu\InstaShop\Model\ImageResize</argument>
+        </arguments>
+    </virtualType>
+    <type name="WindAndeddu\InstaShop\Model\InstaShop">
+        <arguments>
+            <argument name="imageResize" xsi:type="object">WindAndeddu\InstaShop\Model\ImageResize</argument>
+        </arguments>
+    </type>
+    <type name="WindAndeddu\InstaShop\Helper\InstaShopImage">
+        <arguments>
+            <argument name="viewImage" xsi:type="object">WindAndeddu\InstaShop\Model\View\Image</argument>
+        </arguments>
+    </type>
+    <virtualType name="WindAndeddu\InstaShop\Model\ImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_PATH_TO_IMAGE_DIR</argument>
+            <argument name="basePath" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_PATH_TO_IMAGE_DIR</argument>
+        </arguments>
+    </virtualType>
+    <type name="WindAndeddu\InstaShop\Controller\Adminhtml\Image\ImageUploader">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">WindAndeddu\InstaShop\Model\ImageUploader</argument>
+        </arguments>
+    </type>
+    <virtualType name="WindAndeddu\InstaShop\Model\VideoUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_PATH_TO_VIDEO_DIR</argument>
+            <argument name="basePath" xsi:type="const">WindAndeddu\InstaShop\Helper\File::INSTASHOP_PATH_TO_VIDEO_DIR</argument>
+        </arguments>
+    </virtualType>
+    <type name="WindAndeddu\InstaShop\Controller\Adminhtml\Video\VideoUploader">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">WindAndeddu\InstaShop\Model\VideoUploader</argument>
+        </arguments>
+    </type>
+</config>
